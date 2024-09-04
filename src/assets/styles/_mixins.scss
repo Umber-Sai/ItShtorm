@@ -1,0 +1,18 @@
+@import 'colors';
+
+
+@mixin lora-title-38 {
+    font-family: 'Lora', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 38px;
+    color: $blueDC;
+}
+
+@mixin lora-title-26 {
+    font-family: 'Lora', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    color: $blueDC;
+}

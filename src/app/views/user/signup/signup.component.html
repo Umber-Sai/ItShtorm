@@ -1,0 +1,54 @@
+<div class="signup">
+    <div class="container">
+
+        <div class="auth-form" [formGroup]="signupForm">
+            <div class="auth-form-title">Регистрация на сайте</div>
+            <div class="auth-form-body">
+                <input class="auth-form-input input"
+                    formControlName="name"
+                    [value]="signupForm.get('name')?.value | titlecase"
+                type="text" placeholder="Ваше имя">
+                <div class="invalid" *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.touched || signupForm.get('name')?.dirty)">
+                    <div *ngIf="signupForm.get('name')?.errors?.['pattern']">
+                        Только Кириллица и пробел
+                    </div>
+                </div>
+                <input class="auth-form-input input"
+                    formControlName="email"
+                type="email" placeholder="Электронная почта">
+                <div class="invalid" *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)">
+                    <div *ngIf="signupForm.get('email')?.errors?.['email']">
+                        Email должен быть корректным 
+                    </div>
+                </div>
+                <input class="auth-form-input input"
+                    formControlName="password"
+                type="password" placeholder="Пароль">
+                <div class="invalid" *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty)">
+                    <div *ngIf="signupForm.get('password')?.errors?.['pattern']">
+                        Пароль должен быть не менее 8 символов, содержать как минимум 1 букву в верхнем регистре и как минимум 1 цифру
+                    </div>
+                </div>
+                <label class="auth-form-body-checkbox">
+                    <input type="checkbox" formControlName="agree" id="agree">
+                    <div class="fake-checkbox">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 3C4.34315 3 3 4.34315 3 6V18C3 19.6569 4.34315 21 6 21H18C19.6569 21 21 19.6569 21 18V6C21 4.34315 19.6569 3 18 3H6ZM17.8 8.6C18.1314 8.15817 18.0418 7.53137 17.6 7.2C17.1582 6.86863 16.5314 6.95817 16.2 7.4L10.8918 14.4776L8.70711 12.2929C8.31658 11.9024 7.68342 11.9024 7.29289 12.2929C6.90237 12.6834 6.90237 13.3166 7.29289 13.7071L10.2929 16.7071C10.4979 16.9121 10.7817 17.018 11.0709 16.9975C11.3601 16.9769 11.6261 16.8319 11.8 16.6L17.8 8.6Z" fill="#071739"></path> </g></svg>
+                    </div>
+                    <span class="checkbox-text">Я принимаю <a href="#">условия пользовательского соглашения</a> и даю <a href="#">согласие на обработку персональных данных.</a></span>
+                </label>
+
+                <button class="btn" matRipple
+                     [matRippleRadius]="500" 
+                     [matRippleColor]="'#07173950'" 
+                (click)="signup()">Зарегистрироваться</button>
+                <div class="auth-link">
+                    Уже есть аккаунт?<a routerLink="/login">Войдите</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <img src="./assets/img/page/signup.png" alt="signup-pic">
+        </div>
+    </div>
+</div>

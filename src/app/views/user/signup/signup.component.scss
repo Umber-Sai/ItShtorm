@@ -1,0 +1,17 @@
+
+@import '../../../../assets/styles/auth-form';
+
+
+.signup {
+    padding: 120px 0;
+    .container{
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+        .signup-right {
+            width: 607px;
+            border-radius: 5px;
+        }
+    }
+}

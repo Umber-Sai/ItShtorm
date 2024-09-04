@@ -1,0 +1,45 @@
+@import '../../../../assets/styles/colors';
+
+.header {
+    padding: 40px 0;
+    .container {
+        display: grid;
+        grid-template-columns: 85px 1fr 150px 225px;
+        align-items: center;
+        justify-content: start;
+
+        font-size: 16px;
+        font-weight: 500;
+        .header-logo{
+            cursor: pointer;
+        }
+        .header-nav {
+            ul {
+                list-style: none;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 30px;
+                margin-left: 100px;
+                li a{
+                    text-decoration: none;
+                    color: $dark-blue;
+                    cursor: pointer;
+                }
+            }
+        }
+        .header-phone a {
+            color: $blueDC;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .header-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-self: end;
+            gap: 7px;
+            cursor: pointer;
+        }
+    }
+}

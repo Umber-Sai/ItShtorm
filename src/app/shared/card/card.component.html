@@ -1,0 +1,24 @@
+<div class="cart" *ngIf="service">
+    <div class="cart-img" style="background-image: url('{{service.image}}');"></div>
+    <div class="cart-title">{{service.title}}</div>
+    <div class="cart-description">{{service.description}}</div>
+    <div class="cart-footer">
+        <div class="cart-price">От {{service.price}}₽</div>
+        <button class="btn" matRipple
+        [matRippleRadius]="100" 
+        [matRippleColor]="'#07173950'" 
+        (click)="openPopup(service.title)"
+        >Подробнее</button>
+    </div>
+</div>
+
+<div class="cart article" *ngIf="article">
+    <div class="cart-img" style="background-image: url('{{serverStaticPath + article.image}}');">
+        <span>{{article.category}}</span>
+    </div>
+    <div class="cart-title">{{article.title}}</div>
+    <div class="cart-description">{{article.description}}</div>
+    <div class="cart-link" routerLink="/article/{{article.url}}"> 
+        Читать дальше
+    </div>
+</div>

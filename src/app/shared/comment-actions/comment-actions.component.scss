@@ -1,0 +1,25 @@
+
+@import '../../../assets/styles/colors';
+
+.comment-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: start;
+    .action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        cursor: pointer;
+        span {
+            font-weight: 600;
+        }
+        &.active {
+            color: $blueDC;
+            svg path {
+                stroke: $blueDC !important;
+            }
+        }
+    }
+}

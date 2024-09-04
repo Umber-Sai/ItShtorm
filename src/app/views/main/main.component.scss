@@ -1,0 +1,354 @@
+@import '../../../assets/styles/colors';
+@import '../../../assets/styles/mixins';
+
+
+
+.carousel {
+    padding-bottom: 60px;
+    .container {
+        position: relative;
+        .banner {
+            width: 100%;
+            aspect-ratio: 1239/500;
+            overflow: hidden;
+            position: relative;
+            padding: 100px 80px;
+            box-sizing: border-box;
+            z-index: 1;
+            .banner-img {
+                aspect-ratio: 750/500;
+                height: 100%;
+                width: auto;
+                position: absolute;
+                z-index: 2;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+            .banner-circle {
+                width: 1405px;
+                aspect-ratio: 1;
+                background-color: #B9D5FD;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 3;
+            }
+            .banner-info {
+                position: relative;
+                height: 100%;
+                z-index: 4;
+                .banner-head-text {
+                    letter-spacing: 4px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 12px;
+                    color: $blueDC;
+                }
+                .banner-title { 
+                    font-family: 'Lora', sans-serif;
+                    font-size: 50px;
+                    line-height: 130%;
+                    color: #fff;
+                    max-width: 53%;
+                    margin-bottom: 20px;
+                    span {
+                        color: $blueDC;
+                    }
+                }
+                .banner-text {
+                    font-size: 24px;
+                    color: #fff;
+                    line-height: 130%;
+                    max-width: 40%;
+                }
+                .banner-action {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+           
+
+        }
+
+        
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            transform: translateY(-50%);
+            & > div {
+                margin: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .owl-theme .owl-dots {
+        margin: 0 !important;
+        position: absolute;
+        bottom: 15px;
+        right: 50%;
+        transform: translateX(50%);
+        .owl-dot {
+            &.active span{
+                background-color: #fff;
+            }
+            span {
+                margin: 5px 10px;
+                border: 1px solid #fff ;
+                background-color: transparent;
+                
+            }
+        }
+    }
+}
+
+.services {
+    padding: 60px 0;
+    .container {
+        .services-title {
+            @include lora-title-38;
+            margin-bottom: 40px;
+        }
+        .services-cards {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+    }
+}
+
+.about-us {
+    padding: 60px 0;
+    .container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        .about-us-img {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 5px;
+            width: 460px;
+            aspect-ratio: 460/453;
+        }
+        .about-us-info {
+            max-width: 703px;
+            .info-title {
+                @include lora-title-38;
+                margin-bottom: 20px;
+
+            }
+            .info-text {
+                line-height: 130%;
+                margin-bottom: 40px;
+                color: #1E1A2B;
+                span {
+                    font-weight: 500;
+                }
+            }
+            .info-advantages-title {
+                @include lora-title-26;
+                margin-bottom: 20px;
+            }
+            .info-advantages {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                row-gap: 20px;
+                .advantage-card {
+                    &:first-child {
+                        .card-number span {
+                            left: 10px;
+                        }
+                    }
+                    max-width: 316px;
+                    min-height: 90px;
+                    flex-shrink: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    gap: 20px;
+                    .card-number{ 
+                        width: 40px;
+                        height: 40px;
+                        background-color: $light-blue;
+                        border-radius: 50%;
+                        margin-bottom: 17px;
+                        span {
+                            position: relative;
+                            top: -20px;
+                            left: 6px;
+                            font-family: 'Lora', sans-serif;
+                            font-weight: 500;
+                            color: $blueDC;
+                            font-size: 50px;
+                        }
+                    }
+                    .card-text {
+                        max-width: 256px;
+                        span{
+                            font-weight: 500;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.top-articles {
+    padding: 60px 0;
+    .container {
+        .top-articles-title {
+            @include lora-title-38;
+            margin-bottom: 40px;
+        }
+        .top-articles-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .top-articles-link {
+            text-align: right;
+            .link-button {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                gap: 15px;
+                cursor: pointer;
+                span {
+                    font-weight: 500;
+                    color: $blueDC;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+.reviews {
+    padding: 60px 0;
+    .container {
+        .reviews-title {
+            @include lora-title-38;
+            margin-bottom: 20px;
+        }
+        .reviews-carousel {
+            position: relative;
+            .review {
+                max-width: 396px;
+                min-height: 297px;
+                padding: 30px;
+                box-sizing: border-box;
+    
+                border: 2px solid $blueDC;
+                border-radius: 5px;
+                .review-user {
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    gap: 26px;
+                    margin-bottom: 15px;
+                    .user-img {
+                        width: 60px;
+                        aspect-ratio: 1;
+                        flex-shrink: 0;
+                        border-radius: 50%;
+    
+                        background-size: cover;
+                        background-position: center;
+                    }
+                    .user-name {
+                        font-weight: 600;
+                        color: $blueDC;
+                        font-size: 18px;
+                    }
+                }
+                .review-text {
+                    font-size: 16px;
+                    line-height: 140%;
+                }
+            }
+            .carousel-nav-reviews {
+                position: absolute;
+                top: 50%;
+                z-index: 100;
+                transform: translateY(-50%);
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                & > * {
+                    padding: 20px;
+                }
+                .carousel-nav-prev {
+                    position: relative;
+                    right: 45px;
+                }
+                .carousel-nav-next {
+                    position: relative;
+                    left: 45px;
+                }
+            }
+        }
+        
+    }
+}
+
+.info {
+    padding: 60px 0 120px;
+    .container {
+        display: flex;
+        justify-content: start;
+        gap: 26px;
+        align-items: start;
+        .map {
+
+        }
+        .contacts {
+            max-width: 501px;
+            .contacts-title {
+                @include lora-title-38;
+                margin-bottom: 20px;
+            }
+            .contacts-block {
+                margin-bottom: 20px;
+                .contacts-block-title {
+                    font-weight: 500;
+                    font-size: 20px;
+                    color: $blueDC;
+                    margin-bottom: 10px;
+                }
+                .contacts-block-info {
+                    display: inline-block;
+                    text-decoration: none;
+                    color: $dark-blue;
+                }
+                .contacts-block-actions {
+                    display: flex;
+                    align-items: center;
+                    justify-content: start;
+                    gap: 20px;
+                }
+            }
+        }
+    }
+}

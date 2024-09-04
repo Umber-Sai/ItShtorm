@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: $dark-blue;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+button.btn {
+    background-color: $blueDC;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+
+    padding: 15px 33px;
+
+    &.mini {
+        padding: 10px 20px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    &.disabled {
+        background-color: gray;
+        pointer-events: none;
+    }
+
+}
+
+input.input, .asInput {
+    width: 100%;
+    border: 2px solid $blueDC;
+    border-radius: 3px;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    outline: none;
+
+    font-size: 14px;
+    color: $blueDC;
+    margin-bottom: 5px;
+
+    &::placeholder {
+        font-size: 14px;
+        color: #A8ABA7;
+    }
+
+    &.ng-invalid.ng-dirty, .ng-invalid.ng-touched {
+        color: red;
+        border-color: red;
+    }
+}

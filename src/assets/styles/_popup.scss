@@ -1,0 +1,93 @@
+@import 'mixins';
+
+
+
+::ng-deep {
+    .mat-dialog-container {
+        padding: 94px 0 86px;
+        border-radius: 5px;
+        width: 726px;
+        position: relative;
+    }
+}
+
+.close-popup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.content {
+    max-width: 422px;
+    margin: 0 auto;
+    
+    .content-title {
+        @include lora-title-38;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .content-form {
+        width: 100%;
+        margin: 0 auto 20px;
+        .validation-error {
+            &>* {
+                color: red;
+                margin-bottom: 10px;
+            }
+        }
+        .hiden-input {
+            display: none;
+        }
+        .content-input-form.select {
+            position: relative;
+            cursor: pointer;
+            .content-input-form-select {
+                z-index: 101;
+                position: absolute;
+                top: 55px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                border-radius: 3px;
+                overflow: hidden;
+                box-shadow: 0 0 10px #00000080;
+                border: 1px solid #eee;
+
+                .select-option {
+                    width: 100%;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    &:hover {
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+        
+    }
+    .btn.main{
+        width: 100%;
+    }
+}
+
+.thank-you {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+    padding: 163px 0;
+    background-color: #fff;
+    text-align: center;
+    .thank-you-title {
+        @include lora-title-38;
+        margin-bottom: 20px;
+    }
+    .thank-you-text {
+        margin-bottom: 40px;
+    }
+}

@@ -1,0 +1,152 @@
+@import '../../../../assets/styles/mixins';
+@import '../../../../assets/styles/colors';
+
+
+.blog {
+    padding: 80px 0 120px;
+
+    .container {
+        .blog-title {
+            @include lora-title-38;
+            margin-bottom: 40px;
+        }
+
+        .blog-filter {
+            display: grid;
+            grid-template-columns: 1fr 257px;
+            align-items: start;
+            height: 45px;
+            position: relative;
+            margin-bottom: 40px;
+
+            .blog-filter-chips {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+                justify-content: start;
+                flex-wrap: wrap;
+
+                .filter-chip {
+                    padding: 8px 20px;
+                    border-radius: 5px;
+                    border: 2px solid $blueDC;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+
+                    span {
+                        font-size: 16px;
+                        color: $blueDC;
+                    }
+
+                    svg {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .filter-select {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 10;
+                width: 148px;
+                height: 39px;
+                border-radius: 5px;
+                border: 2px solid transparent;
+                overflow: hidden;
+                background-color: #fff;
+                .select-head {
+                    font-size: 16px;
+                    width: 100%;
+                    padding: 10px 0;
+                    box-sizing: border-box;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+                }
+
+                .select-option {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 23px;
+                    box-sizing: border-box;
+
+                    font-size: 16px;
+                    color: #bebebe;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: #eee;
+                    }
+                    &.active {
+                        color: $dark-blue;
+                    }
+                }
+
+                &.active {
+                    width: 257px;
+                    border-color: $light-blue;
+                    height: max-content;
+                    .select-head {
+                        padding: 10px 23px;
+                        background-color: $light-blue;
+                        svg {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+
+      .blog-cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 24px;
+        row-gap: 40px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+      }
+
+      .blog-pagination {
+        margin: 0 auto ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        .pagination-pages {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 3px;
+
+            font-size: 20px;
+            .pagination-page {
+                text-decoration: none;
+                color: $dark-blue;
+                padding: 10px;
+                cursor: pointer;
+                &.active {
+                    color: $light-blue;
+                }
+            }
+        }
+        .pagination-prev, .pagination-next{
+            cursor: pointer;
+            svg {
+                stroke: $light-blue;
+            }
+            &.disabled {
+                pointer-events: none;
+                svg {
+                    stroke: #d9d9d9;
+                }
+            }
+        }
+      }
+    }
+}
