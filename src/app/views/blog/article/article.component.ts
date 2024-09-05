@@ -56,7 +56,6 @@ export class ArticleComponent implements OnInit {
               }
 
               this.articleData = data as ArticleType;
-
               this.loadComments()
 
             },
@@ -101,7 +100,8 @@ export class ArticleComponent implements OnInit {
             throw new Error((data as DefaultResponceType).message)
           }
           // this.commentsCount = (data as CommentsResponseType).allCount;
-          this.commentsQuery((data as CommentsResponseType).comments);
+          const comments = (data as CommentsResponseType).comments
+          this.commentsQuery(comments);
         },
         error: (errorResponse: HttpErrorResponse) => {
           if (errorResponse.error && errorResponse.error.message) {
@@ -143,6 +143,7 @@ export class ArticleComponent implements OnInit {
   }
 
   private commentsQuery(comments: CommentType[]):void {
+    // this.comments = comments
     this.commentsGroups = [];
     this.comments = []
     this.commentsGroups.push(comments.splice(0, 3));

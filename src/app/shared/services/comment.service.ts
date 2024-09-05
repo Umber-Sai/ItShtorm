@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, concatMap, map, of } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { CommentActionType, CommentActionsType, CommentsResponseType } from 'src/app/types/comment.type';
 import { DefaultResponceType } from 'src/app/types/default-responce.type';
@@ -19,37 +19,42 @@ export class CommentService {
   getComments(id: string, offset: number = 0): Observable<DefaultResponceType | CommentsResponseType> {
     return this.http.get<DefaultResponceType | CommentsResponseType>(environment.api + 'comments', {
       params: { 'article': id, 'offset': offset }
-    })
-      .pipe(
-        map((resp) => {
-          if (!this.authService.isLoggedIn) return resp
-          this.getUserActions(id)
-            .subscribe({
-              next: (data: DefaultResponceType | CommentActionsType[]) => {
-                if ((data as DefaultResponceType).error) {
-                  throw new Error((data as DefaultResponceType).message)
-                }
-                const actions = data as CommentActionsType[]
-                const comments = (resp as CommentsResponseType).comments
-                if(comments) {
-                  actions.forEach(action => {
-                    const commentWithAction = comments.find(item => item.id === action.comment);
-                    if(commentWithAction) commentWithAction.action = action.action;
-                  })
-                }
-              },
-              error: (errorResponse: HttpErrorResponse) => {
-                if (errorResponse.error && errorResponse.error.message) {
-                  console.error(errorResponse.error.message)
-                } else {
-                  console.error('Не удалось получить действрия к комментариям');
-                }
-              }
-            })
-          return resp
+    }).pipe(
+        concatMap((resp) => {
+          if (this.authService.isLoggedIn) {
+            return this.getUserActions(id)
+              .pipe(
+                map((data: DefaultResponceType | CommentActionsType[]) => {
+                        if ((data as DefaultResponceType).error) {
+                          throw new Error((data as DefaultResponceType).message)
+                        }
+                        const actions = data as CommentActionsType[]
+                        const comments = (resp as CommentsResponseType).comments
+                        if(comments) {
+                          actions.forEach(action => {
+                            const commentWithAction = comments.find(item => item.id === action.comment);
+                            if(commentWithAction) commentWithAction.action = action.action;
+                          })
+                        }
+                        return resp;
+                      }),
+                catchError((errorResponse: HttpErrorResponse) => {
+                        if (errorResponse.error && errorResponse.error.message) {
+                          console.error(errorResponse.error.message)
+                        } else {
+                          console.error('Не удалось получить действрия к комментариям');
+                        }
+                        return of(resp)
+                      }
+                    ),
+                  )
+
+          } else return of(resp)
         })
       )
   }
+
+
 
   private getUserActions(id: string): Observable<DefaultResponceType | CommentActionsType[]> {
     return this.http.get<DefaultResponceType | CommentActionsType[]>(environment.api + 'comments/article-comment-actions', {
