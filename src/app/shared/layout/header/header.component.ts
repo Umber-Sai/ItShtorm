@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { ConstantsService } from '../../services/constants.service';
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'header-component',
@@ -13,11 +14,14 @@ export class HeaderComponent implements OnInit {
 
   isLogged: boolean = this.authService.isLoggedIn;
   userName : string = this.authService.getUserName
+  p = this.routerService.navPoints
 
   constructor(
     public cs: ConstantsService,
     private authService: AuthService,
     private _snackBar : MatSnackBar,
+    public routerService : RouterService,
+
   ) { }
 
   ngOnInit(): void {

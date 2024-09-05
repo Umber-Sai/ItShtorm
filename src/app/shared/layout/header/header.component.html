@@ -11,19 +11,19 @@
         <nav class="header-nav">
             <ul>
                 <li>
-                    <a routerLink="/" fragment="services">Услуги</a>
+                    <a (click)="routerService.navigateTo(p.services)">Услуги</a>
                 </li>
                 <li>
-                    <a routerLink="/" fragment="aboutUs" >О нас</a>
+                    <a (click)="routerService.navigateTo(p.aboutUs)" >О нас</a>
                 </li>
                 <li>
                     <a routerLink="article" routerLinkActive="active">Статьи</a>
                 </li>
                 <li>
-                    <a routerLink="/" fragment="reviews" >Отзывы</a>
+                    <a (click)="routerService.navigateTo(p.reviews)" >Отзывы</a>
                 </li>
                 <li>
-                    <a routerLink="/" fragment="contacts" >Контакты</a>
+                    <a (click)="routerService.navigateTo(p.contacts)" >Контакты</a>
                 </li>
             </ul>
         </nav>

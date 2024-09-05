@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { OrderPopupComponent } from 'src/app/shared/popups/order-popup/order-popup.component';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { ConstantsService } from 'src/app/shared/services/constants.service';
+import { RouterService } from 'src/app/shared/services/router.service';
 import { ArticleCardType } from 'src/app/types/article-card.type';
 import { DefaultResponceType } from 'src/app/types/default-responce.type';
 import { ServiceCardType } from 'src/app/types/service-card.type';
@@ -127,15 +128,16 @@ export class MainComponent implements OnInit {
    
   topArticles : ArticleCardType[] = []
 
-
   constructor(
     public cs : ConstantsService,
     private dialog: MatDialog,
     private articleSrvice: ArticleService,
-    public constantService: ConstantsService
+    public constantService: ConstantsService,
+    public routerService: RouterService,
   ) { }
 
   ngOnInit(): void {
+
     this.articleSrvice.getTop()
       .subscribe({
         next: (data: DefaultResponceType | ArticleCardType[]) => {
