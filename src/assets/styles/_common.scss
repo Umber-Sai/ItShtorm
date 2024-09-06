@@ -58,7 +58,7 @@ input.input, .asInput {
         color: #A8ABA7;
     }
 
-    &.ng-invalid.ng-dirty, .ng-invalid.ng-touched {
+    &.ng-invalid.ng-dirty, &.ng-invalid.ng-touched {
         color: red;
         border-color: red;
     }

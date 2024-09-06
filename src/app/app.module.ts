@@ -8,7 +8,6 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserModule } from './views/user/user.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
@@ -20,6 +19,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { SharedModule } from './shared/shared.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
+import { PolicyComponent } from './views/policy/policy.component';
 
 
 
@@ -31,12 +31,12 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
     FooterComponent,
     LayoutComponent,
     MainComponent,
+    PolicyComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CarouselModule,
-    UserModule,
     HttpClientModule,
     MatDialogModule,
     MatMenuModule,

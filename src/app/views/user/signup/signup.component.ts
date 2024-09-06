@@ -63,7 +63,7 @@ export class SignupComponent implements OnInit {
           }
         })
     } else {
-      this.signupForm.get('agree')?.markAsTouched()
+      this.signupForm.markAllAsTouched()
     }
   }
 

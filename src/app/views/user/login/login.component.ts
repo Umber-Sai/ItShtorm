@@ -58,7 +58,9 @@ export class LoginComponent implements OnInit {
             }
           }
         })
+    } else {
+      this.loginForm.markAllAsTouched()
     }
-  }
+  } 
 
 }
