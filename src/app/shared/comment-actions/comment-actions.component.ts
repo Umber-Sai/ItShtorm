@@ -76,10 +76,11 @@ export class CommentActionsComponent implements OnInit {
           this._snackBar.open(data.message)
         },
         error: (errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse)
           if (errorResponse.error && errorResponse.error.message) {
-            console.error(errorResponse.error.message)
+            this._snackBar.open(errorResponse.error.message)
           } else {
-            console.error('Не удалось отправить запрос');
+            this._snackBar.open('Не удалось выполнить действие')
           }
         }
       })

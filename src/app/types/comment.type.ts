@@ -23,5 +23,6 @@ export type CommentActionsType = {
 
 export enum CommentActionType {
     like = 'like',
-    dislike = 'dislike'
+    dislike = 'dislike',
+    violate = 'violate'
 }

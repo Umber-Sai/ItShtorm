@@ -28,7 +28,9 @@ export class RouterService {
     this.router.navigate(['/']);
     setTimeout(() => {
       const el = document.getElementById(id);
-      el!.scrollIntoView({'behavior': 'smooth'})
+      if(el) {
+        el!.scrollIntoView({'behavior': 'smooth'})
+      }
     }, 10)
     
   }
