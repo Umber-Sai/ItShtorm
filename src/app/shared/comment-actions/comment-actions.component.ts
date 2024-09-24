@@ -37,43 +37,51 @@ export class CommentActionsComponent implements OnInit {
 
   actionProccess(action : CommentActionType): void {
     if(!this.isLogged) return
-
-    if(this.action === this.actionTypes.like && action === this.actionTypes.dislike) {
-      this.likesCount --
-      this.dislikesCount ++
-      this.action = action
-    }
-
-    else if(this.action === this.actionTypes.dislike && action === this.actionTypes.like) {
-      this.likesCount ++
-      this.dislikesCount --
-      this.action = action
-    }
-
-    else if(this.action === action) {
-      if(action === this.actionTypes.like) {
-        this.likesCount --
-      }
-      if(action === this.actionTypes.dislike) {
-        this.dislikesCount --
-      }
-      this.action = undefined;
-    }
-
-    else if(this.action === undefined) {
-      if(action === this.actionTypes.like) {
-        this.likesCount ++
-      }
-      if(action === this.actionTypes.dislike) {
-        this.dislikesCount ++
-      }
-      this.action = action
-    }
     
     this.commentService.applyAction(action, this.commentId)
       .subscribe({
-        next:(data : DefaultResponceType) => {
-          this._snackBar.open(data.message)
+        next:(responseData : DefaultResponceType) => {
+          if(responseData.error) {
+            this._snackBar.open(responseData.message)
+          } else {
+            // новыое действие
+            // действие совпадает с тем что было
+            // противоположное действие
+
+
+            if(this.action === this.actionTypes.like && action === this.actionTypes.dislike) {
+              this.likesCount --
+              this.dislikesCount ++
+              this.action = action
+            }
+        
+            else if(this.action === this.actionTypes.dislike && action === this.actionTypes.like) {
+              this.likesCount ++
+              this.dislikesCount --
+              this.action = action
+            }
+        
+            else if(this.action === action) {
+              if(action === this.actionTypes.like) {
+                this.likesCount --
+              }
+              if(action === this.actionTypes.dislike) {
+                this.dislikesCount --
+              }
+              this.action = undefined;
+            }
+        
+            else if(this.action === undefined || this.action === this.actionTypes.violate) {
+              if(action === this.actionTypes.like) {
+                this.likesCount ++
+              }
+              if(action === this.actionTypes.dislike) {
+                this.dislikesCount ++
+              }
+              this.action = action
+            }
+            this._snackBar.open(responseData.message)
+          }
         },
         error: (errorResponse: HttpErrorResponse) => {
           console.log(errorResponse)
@@ -84,6 +92,7 @@ export class CommentActionsComponent implements OnInit {
           }
         }
       })
+
   }
  
 }

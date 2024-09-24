@@ -9,6 +9,7 @@ export type CommentType = {
     date: string,
     likesCount: number,
     dislikesCount: number,
+    violatesCount: number,
     user: {
         id: string,
         name: string

@@ -1,5 +1,5 @@
 import { ElementRef, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -18,14 +18,18 @@ export class RouterService {
 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   navPoints = NavPoints;
 
 
   navigateTo(id: NavPoints) : void {
-    this.router.navigate(['/']);
+    console.log(this.router.url)
+    if(this.router.url !== '/') {
+      this.router.navigate(['/']);
+    }
     setTimeout(() => {
       const el = document.getElementById(id);
       if(el) {
